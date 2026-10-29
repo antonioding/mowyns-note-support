@@ -1,15 +1,5 @@
-# 莫问笔记 / Mowyns Note — 支持与隐私
+# Mowyns Note support
 
-本仓库只包含支持页和隐私政策。应用源码、笔记、录音、审核联系电话和发布凭据均不包含在内。
+Independent static support and privacy website for Mowyns Note, in Simplified Chinese, Traditional Chinese, English, Spanish, German, French, Russian, Japanese, Korean, Turkish and Italian.
 
-`docs/` 是可直接部署的静态网站，无构建步骤、无账户、无统计、无外部脚本或字体。
-
-GitHub Pages 使用 `main` 分支的 `/docs` 目录。迁移到其他服务时，直接复制 `docs/` 的内容，保持语言目录和页面路径即可。
-
-本地预览：
-
-```sh
-python3 -m http.server 8765 --directory docs
-```
-
-公开反馈使用本仓库的 Issues。公开页面不显示个人姓名、邮箱或审核联系电话。
+Published from main:/docs at https://antonioding.github.io/mowyns-note-support/. Native app screenshots use fictional demonstration notes. The Duo opening images are unretouched simulator captures. No analytics, account system, remote scripts, external fonts or personal review contact details are included. Feedback is handled by this repository’s Issues.
