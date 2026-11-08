@@ -35,8 +35,8 @@ def load_notice(path: Path) -> dict:
             raise ValueError(f"Empty notice label for {locale}")
         if any(not isinstance(value, str) or not value.strip() for value in copy["paragraphs"]):
             raise ValueError(f"Empty notice paragraph for {locale}")
-        if ISSUE not in copy["paragraphs"][2] or "1.0.39" not in copy["paragraphs"][3] or "1.0.39" not in copy["summary"]:
-            raise ValueError(f"Missing issue/version guidance for {locale}")
+        if ISSUE not in copy["paragraphs"][2]:
+            raise ValueError(f"Missing official issue reference for {locale}")
     return data
 
 
