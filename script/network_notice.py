@@ -14,6 +14,7 @@ END = "<!-- mowyns-network-notice:end -->"
 APPLE_DISCUSSION = "https://developer.apple.com/forums/thread/822198"
 ISSUE = "r.183584353"
 LOCALES = {"zh-Hans", "zh-Hant", "en-US", "es-ES", "de-DE", "fr-FR", "ru", "ja", "ko", "tr", "it"}
+NOTICE_LOCALES = {"zh-Hans"}
 FIELDS = {"heading", "updatedLabel", "summary", "paragraphs", "appleLinkLabel", "detailsLinkLabel"}
 CSS = "#wireless-data-notice{margin:24px 0 32px;padding:18px 20px;border:1px solid #aaa;border-left-width:3px;border-radius:8px}#wireless-data-notice h2{margin:0 0 10px}#wireless-data-notice p{font-size:16px}#wireless-data-notice .date{font-size:14px}"
 
@@ -24,8 +25,8 @@ def load_notice(path: Path) -> dict:
         raise ValueError("Review the official source URL and issue identifier")
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", data.get("updatedAt", "")):
         raise ValueError("Notice requires an ISO update date")
-    if set(data.get("localizations", {})) != LOCALES:
-        raise ValueError("Expected all 11 published locales")
+    if set(data.get("localizations", {})) != NOTICE_LOCALES:
+        raise ValueError("The regional notice is published only in Simplified Chinese")
     for locale, copy in data["localizations"].items():
         if set(copy) != FIELDS:
             raise ValueError(f"Incomplete notice fields for {locale}")
@@ -41,6 +42,8 @@ def load_notice(path: Path) -> dict:
 
 
 def render_notice(data: dict, locale: str, *, detailed: bool, index: bool = False) -> str:
+    if locale not in data["localizations"]:
+        return ""
     copy = data["localizations"][locale]
     paragraphs = copy["paragraphs"] if detailed else [copy["summary"]]
     links = []
@@ -56,6 +59,8 @@ def render_notice(data: dict, locale: str, *, detailed: bool, index: bool = Fals
 
 
 def render_notice_markdown(data: dict, locale: str) -> str:
+    if locale not in data["localizations"]:
+        return ""
     copy = data["localizations"][locale]
     return ("## " + copy["heading"] + "\n\n" + copy["updatedLabel"] + "\n\n" + copy["summary"]
             + "\n\n[" + copy["detailsLinkLabel"] + "](support.html#" + ANCHOR + ") · ["
@@ -67,6 +72,10 @@ def inject_notice(page: str, data: dict, locale: str, *, detailed: bool, index: 
         raise ValueError("Unexpected existing notice markers")
     page = re.sub(re.escape(START) + r".*?" + re.escape(END), "", page, flags=re.S)
     page = re.sub(r'<style id="network-notice-style">.*?</style>', "", page, flags=re.S)
+    # Remove previously published translations as well as their notice styling.
+    # The rest of the localized policy/support page remains byte-for-byte intact.
+    if locale not in data["localizations"]:
+        return page
     if page.count("</head>") != 1:
         raise ValueError("Expected one HTML head")
     page = page.replace("</head>", '<style id="network-notice-style">' + CSS + "</style></head>")
