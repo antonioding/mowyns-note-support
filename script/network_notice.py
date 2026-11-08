@@ -30,14 +30,12 @@ def load_notice(path: Path) -> dict:
     for locale, copy in data["localizations"].items():
         if set(copy) != FIELDS:
             raise ValueError(f"Incomplete notice fields for {locale}")
-        if not isinstance(copy["paragraphs"], list) or len(copy["paragraphs"]) != 4:
-            raise ValueError(f"Expected four complete paragraphs for {locale}")
+        if not isinstance(copy["paragraphs"], list) or not copy["paragraphs"]:
+            raise ValueError(f"Expected nonempty notice paragraphs for {locale}")
         if any(not isinstance(value, str) or not value.strip() for key, value in copy.items() if key != "paragraphs"):
             raise ValueError(f"Empty notice label for {locale}")
         if any(not isinstance(value, str) or not value.strip() for value in copy["paragraphs"]):
             raise ValueError(f"Empty notice paragraph for {locale}")
-        if ISSUE not in copy["paragraphs"][2]:
-            raise ValueError(f"Missing official issue reference for {locale}")
     return data
 
 
@@ -50,7 +48,7 @@ def render_notice(data: dict, locale: str, *, detailed: bool, index: bool = Fals
     if not detailed:
         target = (locale + "/" if index else "") + "support.html#" + ANCHOR
         links.append('<a href="' + target + '">' + html.escape(copy["detailsLinkLabel"]) + "</a>")
-    links.append('<a href="' + APPLE_DISCUSSION + '">' + html.escape(copy["appleLinkLabel"]) + " · " + ISSUE + "</a>")
+    links.append('<a href="' + APPLE_DISCUSSION + '">' + html.escape(copy["appleLinkLabel"]) + "</a>")
     return (START + '<section id="' + ANCHOR + '" aria-labelledby="wireless-data-heading">'
             + '<h2 id="wireless-data-heading">' + html.escape(copy["heading"]) + '</h2>'
             + '<p class="date"><time datetime="' + data["updatedAt"] + '">' + html.escape(copy["updatedLabel"]) + '</time></p>'
@@ -64,7 +62,7 @@ def render_notice_markdown(data: dict, locale: str) -> str:
     copy = data["localizations"][locale]
     return ("## " + copy["heading"] + "\n\n" + copy["updatedLabel"] + "\n\n" + copy["summary"]
             + "\n\n[" + copy["detailsLinkLabel"] + "](support.html#" + ANCHOR + ") · ["
-            + copy["appleLinkLabel"] + " · " + ISSUE + "](" + APPLE_DISCUSSION + ")\n\n")
+            + copy["appleLinkLabel"] + "](" + APPLE_DISCUSSION + ")\n\n")
 
 
 def inject_notice(page: str, data: dict, locale: str, *, detailed: bool, index: bool = False) -> str:

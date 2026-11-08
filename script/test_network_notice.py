@@ -25,7 +25,6 @@ class NoticeTests(unittest.TestCase):
                     if locale in notice.NOTICE_LOCALES:
                         self.assertEqual(page.count('id="wireless-data-notice"'), 1)
                         self.assertIn(notice.APPLE_DISCUSSION, page)
-                        self.assertIn(notice.ISSUE, page)
                     else:
                         self.assertEqual(page, BASE)
                     stripped = re.sub(re.escape(notice.START) + r".*?" + re.escape(notice.END), "", page, flags=re.S)
