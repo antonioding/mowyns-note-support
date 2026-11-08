@@ -6,145 +6,16 @@
     "zh-Hans": {
       "heading": "关于 iOS 无线数据权限提示",
       "updatedLabel": "说明更新于 2026 年 11 月 8 日",
-      "summary": "部分 iPhone 在打开快速新建或文字输入框时会显示无线数据权限提示，已定位到的是 iOS 系统输入／听写组件的网络可用性探测；出现提示本身不表示应用已实际连接远端服务器或上传内容。我们已在 iOS 27.0.1 复现；Apple 官方论坛另有 iOS 26.4、26.5 和 iOS 27 测试版的同类报告。我们对造成的困扰与不安诚挚致歉，仍在寻找和验证可行的修复。请在提示中选择“不允许”。这不会影响本地文字笔记的编辑和保存。",
+      "summary": "部分中国大陆销售的 iPhone（国行机型）在 iOS 27.0.1 等已发现版本中，打开快速新建或文字输入框时可能出现无线数据权限提示。Apple 官方说明，其他销售地区的 iPhone 不会显示这类弹窗。已定位到的是 iOS 系统输入／听写组件的网络可用性探测；提示本身不表示莫问笔记已连接远端服务器或上传内容。遇到提示时，请选择“不允许”。拒绝此权限不会影响莫问笔记的本地功能，笔记和附件仍保存在本机。",
       "paragraphs": [
-        "我们正在调查部分 iPhone 在打开快速新建或文字输入框时，显示“允许‘莫问笔记’使用无线数据？”的情况。即使没有按下麦克风或使用听写，也可能出现这一提示。我们对这给你带来的困扰与不安诚挚致歉，并会优先排查，尽快寻找和验证可行的规避方式与修复。",
-        "在此次问题的源码检查和已采集日志中，未发现莫问业务代码发起的远端请求，也未发现笔记、附件或录音被上传的证据。我们已定位到 iOS 文本输入／系统键盘听写组件发起的网络可用性探测。这项探测用于查询网络状态，不能将探测调用或权限提示本身等同于实际远端连接或数据上传。该检查可能发生在应用进程内，因此系统以应用名称显示权限提示。以上结论限于当前检查范围，不代表对所有系统组件网络行为的完整审计。",
+        "这类提示出现在中国大陆销售的 iPhone（国行机型）上。Apple 官方说明，其他销售地区的 iPhone 不会显示这种按 App 授权无线局域网与蜂窝网络的弹窗。部分国行机型在打开快速新建或普通文字输入框时，即使没有使用听写，也可能出现“允许‘莫问笔记’使用无线数据？”的提示。",
+        "目前已定位到的触发路径是 iOS 系统输入／听写组件的网络可用性探测，用于查询网络状态。这项检查可能发生在应用进程内，所以提示显示“莫问笔记”的名称。探测或权限弹窗本身不表示已经连接远端服务器，也不表示笔记、附件或录音被上传。",
         "我们已在 iOS 27.0.1 复现这一提示；Apple 官方开发者论坛还记录了 iOS 26.4、26.5 和 iOS 27 测试版的同类报告。Apple 技术支持将相关反馈关联到内部问题 r.183584353。截至本说明更新时，公开讨论没有公布修复版本或公开接口解决方案，我们仍未验证能稳定消除提示的修复。",
-        "请在提示中选择“不允许”。这不会影响本地文字笔记的编辑和保存。请保留现有 App，不要为了消除提示或回退版本而删除它，以免移除本机笔记；需要时先通过“备份与迁移”导出备份。系统键盘听写，以及你主动打开链接、分享或使用云文件服务等操作，仍受各自设置与政策管理。"
+        "请在弹窗中选择“不允许”。拒绝此权限不会影响莫问笔记的本地功能，已有笔记和附件仍保存在本机。不要为了消除提示而删除或重装 App，以免移除本机笔记；需要时先通过“备份与迁移”导出备份。系统键盘听写，以及你主动打开链接、分享或使用云文件服务等操作，仍由各自的设置与政策管理。"
       ],
       "appleLinkLabel": "查看 Apple 官方讨论",
       "detailsLinkLabel": "查看 FAQ 中的调查说明与使用建议"
-    },
-    "zh-Hant": {
-      "heading": "關於 iOS 無線資料權限提示",
-      "updatedLabel": "說明更新於 2026 年 11 月 8 日",
-      "summary": "部分 iPhone 在開啟快速新增或文字輸入欄位時會顯示無線資料權限提示，已定位到的是 iOS 系統輸入／聽寫元件的網路可用性探測；出現提示本身不表示 App 已實際連線至遠端伺服器或上傳內容。我們已在 iOS 27.0.1 重現；Apple 官方論壇另有 iOS 26.4、26.5 和 iOS 27 測試版的同類回報。我們對造成的困擾與不安誠摯致歉，仍在尋找及驗證可行的修復。請在提示中選擇「不允許」。這不會影響本機文字筆記的編輯與儲存。",
-      "paragraphs": [
-        "我們正在調查部分 iPhone 在開啟快速新增或文字輸入欄位時，顯示「允許『莫問筆記』使用無線資料？」的情況。即使沒有按下麥克風或使用聽寫，也可能出現此提示。我們對這給你帶來的困擾與不安誠摯致歉，並會優先排查，盡快尋找及驗證可行的避開方式與修復。",
-        "在此次問題的原始碼檢查與已擷取紀錄中，未發現莫問業務程式碼發起的遠端請求，也未發現筆記、附件或錄音被上傳的證據。我們已定位到 iOS 文字輸入／系統鍵盤聽寫元件發起的網路可用性探測。這項探測用於查詢網路狀態，不能將探測呼叫或權限提示本身等同於實際遠端連線或資料上傳。此檢查可能發生在 App 程序內，因此系統以 App 名稱顯示權限提示。以上結論限於目前檢查範圍，並不代表已完整稽核所有系統元件的網路行為。",
-        "我們已在 iOS 27.0.1 重現此提示；Apple 官方開發者論壇也記錄了 iOS 26.4、26.5 和 iOS 27 測試版的同類回報。Apple 技術支援將相關回報關聯到內部問題 r.183584353。截至本說明更新時，公開討論尚未公布修復版本或公開介面的解決方案，我們仍未驗證可穩定消除提示的修復。",
-        "請在提示中選擇「不允許」。這不會影響本機文字筆記的編輯與儲存。請保留現有 App，不要為了消除提示或回復舊版而刪除它，以免移除本機筆記；有需要時請先透過「備份與遷移」匯出備份。系統鍵盤聽寫，以及你主動開啟連結、分享或使用雲端檔案服務等操作，仍受各自設定與政策管理。"
-      ],
-      "appleLinkLabel": "查看 Apple 官方討論",
-      "detailsLinkLabel": "查看 FAQ 中的調查說明與使用建議"
-    },
-    "en-US": {
-      "heading": "About the iOS wireless-data permission prompt",
-      "updatedLabel": "Notice updated November 8, 2026",
-      "summary": "Some iPhones show a wireless-data permission prompt when Quick Note or a text field opens. We traced a network-availability check by iOS system text-input or dictation components; the prompt itself does not mean the app connected to a remote server or uploaded content. We reproduced it on iOS 27.0.1; Apple’s Developer Forums also contain similar reports for iOS 26.4, 26.5 and iOS 27 betas. We sincerely apologize for the concern and inconvenience and are continuing to investigate a fix. Please choose “Don’t Allow” when prompted. Editing and saving local text notes are unaffected.",
-      "paragraphs": [
-        "We are investigating a wireless-data permission prompt that appears on some iPhones when Quick Note or a text field opens. It may appear even without tapping the microphone or using dictation. We sincerely apologize for the concern and inconvenience this causes. We are prioritizing the investigation and working to find and validate a workaround and a fix as soon as possible.",
-        "Our source review and the logs captured for this issue have not identified remote requests initiated by Mowyns application code, or evidence that notes, attachments or recordings were uploaded. We traced a network-availability check started by iOS text-input or system-keyboard dictation components. This check queries network status; the call or permission prompt alone is not evidence of an actual remote connection or data upload. The check may run within the app process, so the system displays the app name. These findings are limited to the current investigation and are not a complete audit of every system component’s network activity.",
-        "We reproduced this prompt on iOS 27.0.1. Apple’s Developer Forums also document similar reports for iOS 26.4, 26.5 and iOS 27 betas. Apple Developer Technical Support linked related reports to internal issue r.183584353. As of this notice, the public discussion has not announced a fixed OS version or a public-API solution. We have not yet verified a reliable fix that eliminates the prompt.",
-        "Please choose “Don’t Allow” when prompted. Editing and saving local text notes are unaffected. Keep your existing app: do not delete it to remove the prompt or try to downgrade, as deleting it removes local notes. Export a backup through Backup & Migration first if needed. System-keyboard dictation and actions you initiate, such as opening links, sharing or using cloud file services, remain subject to their own settings and policies."
-      ],
-      "appleLinkLabel": "Read Apple’s official discussion",
-      "detailsLinkLabel": "Read the FAQ investigation notice and guidance"
-    },
-    "es-ES": {
-      "heading": "Sobre el aviso de iOS para permitir el uso de datos inalámbricos",
-      "updatedLabel": "Aviso actualizado el 8 de noviembre de 2026",
-      "summary": "Algunos iPhone muestran un aviso de permiso para usar datos inalámbricos al abrir una nota rápida o un campo de texto. Hemos localizado una comprobación de disponibilidad de red realizada por los componentes de entrada de texto o dictado de iOS; el aviso por sí solo no significa que la aplicación se haya conectado a un servidor remoto o haya subido contenido. Lo hemos reproducido en iOS 27.0.1; los foros de desarrolladores de Apple también recogen casos similares en iOS 26.4, 26.5 y las versiones beta de iOS 27. Lamentamos sinceramente la preocupación y las molestias y seguimos investigando una solución. Elige «No permitir» cuando aparezca el aviso. Esto no afecta a la edición ni al guardado de notas de texto locales.",
-      "paragraphs": [
-        "Estamos investigando un aviso de permiso para usar datos inalámbricos que aparece en algunos iPhone al abrir una nota rápida o un campo de texto. Puede aparecer incluso sin tocar el micrófono ni utilizar el dictado. Lamentamos sinceramente la preocupación y las molestias que esto causa. Estamos dando prioridad a la investigación y trabajando para encontrar y comprobar, lo antes posible, una forma de evitar el aviso y una solución al problema.",
-        "La revisión del código fuente y los registros recopilados para este problema no han identificado solicitudes a servicios remotos iniciadas por el código de Mowyns ni pruebas de que se hayan subido notas, archivos adjuntos o grabaciones. Hemos localizado una comprobación de disponibilidad de red iniciada por los componentes de entrada de texto de iOS o dictado del teclado del sistema. Esta comprobación consulta el estado de la red; la llamada o el aviso de permiso por sí solos no prueban una conexión remota ni una subida de datos. La comprobación puede ejecutarse dentro del proceso de la aplicación, por lo que el sistema muestra su nombre. Estas conclusiones se limitan a la investigación actual y no constituyen una auditoría completa de la actividad de red de todos los componentes del sistema.",
-        "Hemos reproducido este aviso en iOS 27.0.1. Los foros oficiales de desarrolladores de Apple también recogen casos similares en iOS 26.4, 26.5 y las versiones beta de iOS 27. El soporte técnico de Apple vinculó los informes relacionados al problema interno r.183584353. A fecha de este aviso, la discusión pública no ha anunciado una versión del sistema que lo corrija ni una solución mediante una API pública. Aún no hemos verificado una solución fiable que elimine el aviso.",
-        "Elige «No permitir» cuando aparezca el aviso. Esto no afecta a la edición ni al guardado de notas de texto locales. Conserva la aplicación que tienes: no la elimines para quitar el aviso o volver a una versión anterior, ya que esto borraría tus notas locales. Si lo necesitas, exporta antes una copia de seguridad desde Copia de seguridad y migración. El dictado del teclado del sistema y las acciones que tú inicies, como abrir enlaces, compartir o utilizar servicios de archivos en la nube, siguen sujetos a sus propios ajustes y políticas."
-      ],
-      "appleLinkLabel": "Consultar la discusión oficial de Apple",
-      "detailsLinkLabel": "Consultar el aviso de investigación y las recomendaciones en las preguntas frecuentes"
-    },
-    "de-DE": {
-      "heading": "Zum iOS-Dialog für den Zugriff auf mobile Daten und WLAN",
-      "updatedLabel": "Hinweis aktualisiert am 8. November 2026",
-      "summary": "Auf manchen iPhones erscheint beim Öffnen einer Kurznotiz oder eines Textfelds eine Abfrage zum Netzwerkzugriff. Wir haben eine Prüfung der Netzwerkverfügbarkeit durch die Texteingabe- oder Diktierkomponenten von iOS zurückverfolgt. Der Dialog allein bedeutet nicht, dass die App eine Verbindung zu einem entfernten Server hergestellt oder Inhalte hochgeladen hat. Wir haben den Dialog unter iOS 27.0.1 reproduziert; in Apples Entwicklerforen gibt es ähnliche Berichte zu iOS 26.4, 26.5 und Betaversionen von iOS 27. Wir entschuldigen uns aufrichtig für die Verunsicherung und die Unannehmlichkeiten und arbeiten weiter an einer Lösung. Bitte wähle im Dialog „Nicht erlauben“. Das Bearbeiten und Speichern lokaler Textnotizen bleibt davon unberührt.",
-      "paragraphs": [
-        "Wir untersuchen eine Abfrage zum Netzwerkzugriff, die auf manchen iPhones beim Öffnen einer Kurznotiz oder eines Textfelds erscheint. Sie kann auch auftreten, ohne dass du auf das Mikrofon tippst oder die Diktierfunktion verwendest. Wir entschuldigen uns aufrichtig für die dadurch entstandene Verunsicherung und die Unannehmlichkeiten. Wir behandeln die Untersuchung mit hoher Priorität und arbeiten daran, so bald wie möglich eine Umgehungsmöglichkeit und eine Fehlerbehebung zu finden und zu überprüfen.",
-        "Bei der Prüfung des Quellcodes und der für dieses Problem erfassten Protokolle haben wir weder vom Mowyns-App-Code ausgelöste Anfragen an entfernte Dienste noch Hinweise darauf gefunden, dass Notizen, Anhänge oder Aufnahmen hochgeladen wurden. Wir haben eine Prüfung der Netzwerkverfügbarkeit durch iOS-Komponenten für Texteingabe oder die Diktierfunktion der Systemtastatur zurückverfolgt. Sie fragt den Netzwerkstatus ab; der Aufruf oder der Berechtigungsdialog allein belegt weder eine tatsächliche Verbindung zu einem entfernten Server noch einen Upload. Die Prüfung kann im Prozess der App laufen, weshalb das System den App-Namen anzeigt. Diese Erkenntnisse gelten für den bisherigen Untersuchungsumfang und stellen keine vollständige Prüfung der Netzwerkaktivität sämtlicher Systemkomponenten dar.",
-        "Wir haben diesen Dialog unter iOS 27.0.1 reproduziert. Apples offizielle Entwicklerforen dokumentieren ähnliche Berichte zu iOS 26.4, 26.5 und Betaversionen von iOS 27. Apples technischer Support hat die zugehörigen Meldungen dem internen Problem r.183584353 zugeordnet. Zum Zeitpunkt dieses Hinweises wurde in der öffentlichen Diskussion weder eine korrigierte Betriebssystemversion noch eine Lösung über eine öffentliche API bekannt gegeben. Eine zuverlässige Fehlerbehebung, die den Dialog beseitigt, haben wir noch nicht bestätigt.",
-        "Bitte wähle im Dialog „Nicht erlauben“. Das Bearbeiten und Speichern lokaler Textnotizen bleibt davon unberührt. Behalte deine vorhandene App: Lösche sie nicht, um den Dialog zu beseitigen oder eine ältere Version zu installieren, denn dadurch würden deine lokalen Notizen entfernt. Exportiere bei Bedarf vorher eine Sicherung über „Sicherung und Migration“. Die Diktierfunktion der Systemtastatur und von dir gestartete Aktionen wie das Öffnen von Links, Teilen oder die Nutzung von Cloud-Dateidiensten unterliegen weiterhin den jeweiligen Einstellungen und Richtlinien."
-      ],
-      "appleLinkLabel": "Apples offizielle Diskussion lesen",
-      "detailsLinkLabel": "Untersuchungsstand und Empfehlungen in den FAQ lesen"
-    },
-    "fr-FR": {
-      "heading": "À propos de la demande d’accès aux données sans fil d’iOS",
-      "updatedLabel": "Avis mis à jour le 8 novembre 2026",
-      "summary": "Sur certains iPhone, une demande d’accès aux données sans fil apparaît à l’ouverture d’une note rapide ou d’un champ de texte. Nous avons identifié une vérification de la disponibilité du réseau par les composants de saisie de texte ou de dictée d’iOS ; la demande seule ne signifie pas que l’application s’est connectée à un serveur distant ou a envoyé du contenu. Nous l’avons reproduite sous iOS 27.0.1 ; les forums de développeurs d’Apple mentionnent aussi des cas similaires sous iOS 26.4, 26.5 et les versions bêta d’iOS 27. Nous vous présentons nos sincères excuses pour l’inquiétude et la gêne occasionnées et poursuivons nos recherches. Veuillez choisir « Ne pas autoriser » lorsque la demande apparaît. La modification et l’enregistrement des notes de texte locales ne sont pas affectés.",
-      "paragraphs": [
-        "Nous enquêtons sur une demande d’accès aux données sans fil qui apparaît sur certains iPhone à l’ouverture d’une note rapide ou d’un champ de texte. Elle peut apparaître sans que vous touchiez le microphone ni utilisiez la dictée. Nous vous présentons nos sincères excuses pour l’inquiétude et la gêne occasionnées. Cette enquête est prioritaire : nous cherchons à trouver et à vérifier au plus vite un moyen de contourner le problème ainsi qu’un correctif.",
-        "Notre examen du code source et des journaux recueillis pour ce problème n’a révélé ni requêtes vers des services distants lancées par le code de Mowyns, ni preuve d’envoi de notes, de pièces jointes ou d’enregistrements. Nous avons identifié une vérification de la disponibilité du réseau par les composants de saisie de texte d’iOS ou de dictée du clavier système. Cette vérification consulte l’état du réseau ; l’appel ou la demande d’autorisation seuls ne prouvent pas une connexion distante effective ni un envoi de données. La vérification peut s’exécuter dans le processus de l’application, ce qui explique l’affichage de son nom par le système. Ces conclusions se limitent à notre enquête actuelle et ne constituent pas un audit complet de l’activité réseau de tous les composants du système.",
-        "Nous avons reproduit cette demande sous iOS 27.0.1. Les forums officiels de développeurs d’Apple mentionnent aussi des cas similaires sous iOS 26.4, 26.5 et les versions bêta d’iOS 27. L’assistance technique d’Apple a rattaché les signalements concernés au problème interne r.183584353. À la date de cet avis, la discussion publique n’a annoncé ni version du système corrigeant le problème ni solution par une API publique. Nous n’avons pas encore vérifié de correction fiable permettant de supprimer cette demande.",
-        "Veuillez choisir « Ne pas autoriser » lorsque la demande apparaît. La modification et l’enregistrement des notes de texte locales ne sont pas affectés. Conservez votre application actuelle : ne la supprimez pas pour faire disparaître la demande ou revenir à une ancienne version, car cela effacerait vos notes locales. Si nécessaire, exportez d’abord une sauvegarde depuis Sauvegarde et migration. La dictée du clavier système et les actions que vous lancez, comme ouvrir des liens, partager ou utiliser des services de fichiers dans le cloud, restent soumises à leurs propres réglages et politiques."
-      ],
-      "appleLinkLabel": "Lire la discussion officielle d’Apple",
-      "detailsLinkLabel": "Consulter l’avis d’enquête et les recommandations dans la FAQ"
-    },
-    "it": {
-      "heading": "Informazioni sulla richiesta di accesso ai dati wireless di iOS",
-      "updatedLabel": "Avviso aggiornato l’8 novembre 2026",
-      "summary": "Su alcuni iPhone compare una richiesta di accesso ai dati wireless quando si apre una nota rapida o un campo di testo. Abbiamo tracciato un controllo della disponibilità della rete eseguito dai componenti di immissione del testo o dettatura di iOS; la richiesta da sola non significa che l’app si sia collegata a un server remoto o abbia caricato contenuti. Abbiamo riprodotto il problema su iOS 27.0.1; nei forum per sviluppatori di Apple ci sono segnalazioni simili per iOS 26.4, 26.5 e le versioni beta di iOS 27. Ci scusiamo sinceramente per la preoccupazione e il disagio e continuiamo a cercare una soluzione. Se compare la richiesta, scegli «Non consentire». La modifica e il salvataggio delle note di testo locali non ne risentono.",
-      "paragraphs": [
-        "Stiamo indagando su una richiesta di accesso ai dati wireless che compare su alcuni iPhone quando si apre una nota rapida o un campo di testo. Può comparire anche senza toccare il microfono o usare la dettatura. Ci scusiamo sinceramente per la preoccupazione e il disagio che questo provoca. Stiamo dando priorità all’indagine per trovare e verificare al più presto una soluzione temporanea e una correzione del problema.",
-        "La revisione del codice sorgente e dei registri raccolti per questo problema non ha individuato richieste remote avviate dal codice di Mowyns né prove del caricamento di note, allegati o registrazioni. Abbiamo tracciato un controllo della disponibilità della rete avviato dai componenti di immissione del testo di iOS o di dettatura della tastiera di sistema. Questo controllo consulta lo stato della rete; la chiamata o la richiesta di autorizzazione da sole non dimostrano una connessione remota effettiva o un caricamento di dati. Il controllo può essere eseguito nel processo dell’app, perciò il sistema ne mostra il nome. Queste conclusioni si limitano all’indagine attuale e non costituiscono una verifica completa dell’attività di rete di tutti i componenti del sistema.",
-        "Abbiamo riprodotto questa richiesta su iOS 27.0.1. Nei forum ufficiali per sviluppatori di Apple sono documentate segnalazioni simili per iOS 26.4, 26.5 e le versioni beta di iOS 27. Il supporto tecnico di Apple ha collegato le segnalazioni al problema interno r.183584353. Alla data di questo avviso, la discussione pubblica non ha annunciato una versione del sistema operativo che risolva il problema né una soluzione tramite API pubbliche. Non abbiamo ancora verificato una correzione affidabile che elimini la richiesta.",
-        "Se compare la richiesta, scegli «Non consentire». La modifica e il salvataggio delle note di testo locali non ne risentono. Conserva l’app attuale: non eliminarla per rimuovere la richiesta o tornare a una versione precedente, perché così rimuoveresti le note locali. Se necessario, esporta prima un backup da Backup e migrazione. La dettatura della tastiera di sistema e le azioni che avvii tu, come aprire link, condividere o usare servizi di file nel cloud, restano soggette alle rispettive impostazioni e informative."
-      ],
-      "appleLinkLabel": "Leggi la discussione ufficiale di Apple",
-      "detailsLinkLabel": "Leggi l’avviso sull’indagine e le indicazioni nelle FAQ"
-    },
-    "ru": {
-      "heading": "О запросе iOS на доступ к беспроводным данным",
-      "updatedLabel": "Обновлено 8 ноября 2026 года",
-      "summary": "На некоторых iPhone при открытии быстрой заметки или текстового поля появляется запрос доступа к беспроводным данным. Мы проследили проверку доступности сети, выполняемую системными компонентами ввода текста или диктовки iOS. Сам запрос разрешения не означает, что приложение подключилось к удалённому серверу или передало содержимое. Мы воспроизвели запрос на iOS 27.0.1; на форумах разработчиков Apple есть аналогичные сообщения об iOS 26.4, 26.5 и бета-версиях iOS 27. Приносим искренние извинения за беспокойство и неудобства и продолжаем искать решение. Пожалуйста, выберите «Не разрешать» при появлении запроса. Это не влияет на редактирование и сохранение локальных текстовых заметок.",
-      "paragraphs": [
-        "Мы расследуем появление запроса на доступ к беспроводным данным на некоторых iPhone при открытии быстрой заметки или текстового поля. Он может появиться, даже если вы не нажимали на микрофон и не использовали диктовку. Искренне приносим извинения за вызванные этим беспокойство и неудобства. Мы уделяем этой проблеме первоочередное внимание и стараемся как можно скорее найти и проверить способ её обхода и исправление.",
-        "В ходе проверки исходного кода и журналов, собранных для этой проблемы, не обнаружено запросов к удалённым сервисам из кода Mowyns или свидетельств передачи заметок, вложений либо записей. Мы проследили проверку доступности сети, выполняемую компонентами ввода текста iOS или диктовки системной клавиатуры. Она запрашивает состояние сети; сам вызов или запрос разрешения не доказывает фактическое подключение к удалённому серверу или передачу данных. Проверка может выполняться в процессе приложения, поэтому система показывает его название. Эти выводы ограничены текущим исследованием и не являются полным аудитом сетевой активности всех системных компонентов.",
-        "Мы воспроизвели этот запрос на iOS 27.0.1. На официальных форумах разработчиков Apple также есть аналогичные сообщения об iOS 26.4, 26.5 и бета-версиях iOS 27. Техническая поддержка Apple связала соответствующие обращения с внутренней проблемой r.183584353. На дату этого уведомления в публичном обсуждении не названы ни версия ОС с исправлением, ни решение через публичный API. Мы ещё не подтвердили надёжное исправление, устраняющее запрос.",
-        "Пожалуйста, выберите «Не разрешать» при появлении запроса. Это не влияет на редактирование и сохранение локальных текстовых заметок. Сохраните установленное приложение: не удаляйте его ради устранения запроса или возврата к старой версии, поскольку при удалении стираются локальные заметки. При необходимости сначала экспортируйте резервную копию в разделе «Копии и перенос». Диктовка системной клавиатуры и действия, которые вы запускаете сами, например открытие ссылок, отправка через меню общего доступа или использование облачных файловых сервисов, по-прежнему регулируются их собственными настройками и политиками."
-      ],
-      "appleLinkLabel": "Официальное обсуждение Apple",
-      "detailsLinkLabel": "Подробности расследования и рекомендации в FAQ"
-    },
-    "ja": {
-      "heading": "iOS のワイヤレスデータ通信の許可ダイアログについて",
-      "updatedLabel": "2026年11月8日更新",
-      "summary": "一部の iPhone では、クイックノートやテキスト入力欄を開くと、ワイヤレスデータ通信の許可を求めるダイアログが表示されます。iOS のシステム文字入力・音声入力コンポーネントによるネットワーク利用可否の確認処理を特定しました。ダイアログの表示自体は、アプリが遠隔サーバーへ接続したことや内容をアップロードしたことを意味しません。iOS 27.0.1 で再現を確認しており、Apple の開発者フォーラムには iOS 26.4、26.5、iOS 27 ベータ版での類似報告もあります。ご不安とご不便をおかけしていることをお詫びし、引き続き解決策を調査しています。ダイアログでは「許可しない」を選んでください。端末内のテキストノートの編集と保存には影響しません。",
-      "paragraphs": [
-        "一部の iPhone で、クイックノートや文字入力欄を開くとワイヤレスデータ通信の許可ダイアログが表示される問題を調査しています。マイクを押したり音声入力を使ったりしていなくても、表示される場合があります。ご心配とご不便をおかけしていることを心よりお詫び申し上げます。この問題を優先して調査し、できるだけ早く回避方法と修正を見つけ、検証できるよう取り組んでいます。",
-        "今回のソースコードと取得済みログの確認では、Mowyns のアプリコードが遠隔サービスにリクエストを送信した証拠や、ノート・添付ファイル・録音をアップロードした証拠は見つかっていません。iOS の文字入力・システムキーボードの音声入力コンポーネントによるネットワーク利用可否の確認処理を特定しました。これはネットワークの状態を照会する処理であり、呼び出しや許可ダイアログだけで、実際の遠隔接続やデータ送信が行われたとは判断できません。この確認処理はアプリのプロセス内で実行されることがあるため、システムはアプリ名を表示します。以上は現在の調査範囲に限った結果であり、すべてのシステムコンポーネントのネットワーク動作を完全に監査したものではありません。",
-        "このダイアログは iOS 27.0.1 で再現を確認しました。Apple 公式開発者フォーラムには、iOS 26.4、26.5、iOS 27 ベータ版での類似報告もあります。Apple の技術サポートは関連する報告を内部の問題 r.183584353 に関連付けています。本案内の更新時点で、公開の議論には修正済みの OS バージョンや公開 API による解決策の発表はありません。ダイアログを安定して解消する修正は、まだ検証できていません。",
-        "ダイアログでは「許可しない」を選んでください。端末内のテキストノートの編集と保存には影響しません。現在のアプリはそのまま残してください。ダイアログを消したり古いバージョンに戻したりするためにアプリを削除すると、端末内のノートも削除されます。必要に応じて、先に「バックアップと移行」からバックアップを書き出してください。システムキーボードの音声入力や、リンクを開く・共有する・クラウドのファイルサービスを利用するなど、ご自身で開始する操作には、それぞれの設定とポリシーが適用されます。"
-      ],
-      "appleLinkLabel": "Apple 公式の議論を読む",
-      "detailsLinkLabel": "FAQ の調査内容と利用上の案内を読む"
-    },
-    "ko": {
-      "heading": "iOS 무선 데이터 접근 권한 알림 안내",
-      "updatedLabel": "2026년 11월 8일 업데이트",
-      "summary": "일부 iPhone에서는 빠른 노트나 텍스트 입력란을 열면 무선 데이터 사용 권한 알림이 표시됩니다. iOS 시스템 텍스트 입력 또는 받아쓰기 구성 요소의 네트워크 가용성 확인 호출을 추적했습니다. 알림 자체가 앱이 원격 서버에 연결했거나 콘텐츠를 업로드했다는 뜻은 아닙니다. iOS 27.0.1에서 재현했으며, Apple 개발자 포럼에도 iOS 26.4, 26.5 및 iOS 27 베타의 유사 사례가 보고되어 있습니다. 불안과 불편을 드린 점 진심으로 사과드리며 해결 방법을 계속 조사하고 있습니다. 알림에서 “허용 안 함”을 선택해 주세요. 기기에 저장된 텍스트 노트의 편집과 저장에는 영향이 없습니다.",
-      "paragraphs": [
-        "일부 iPhone에서 빠른 메모나 텍스트 입력란을 열 때 무선 데이터 접근 권한 알림이 나타나는 문제를 조사하고 있습니다. 마이크를 누르거나 받아쓰기를 사용하지 않아도 알림이 나타날 수 있습니다. 이로 인해 걱정과 불편을 드린 점 진심으로 사과드립니다. 이 문제를 우선적으로 조사하고 있으며, 가능한 우회 방법과 수정 방안을 최대한 빨리 찾아 검증하기 위해 노력하고 있습니다.",
-        "이번 문제의 소스 코드와 수집된 로그를 검토한 결과, Mowyns 앱 코드가 원격 요청을 시작했거나 노트, 첨부 파일, 녹음을 업로드했다는 증거는 발견되지 않았습니다. iOS 텍스트 입력 또는 시스템 키보드 받아쓰기 구성 요소의 네트워크 가용성 확인 호출을 추적했습니다. 이 확인은 네트워크 상태를 조회하는 것으로, 호출이나 권한 알림 자체가 실제 원격 연결 또는 데이터 업로드의 증거는 아닙니다. 확인이 앱 프로세스 안에서 실행될 수 있어 시스템에 앱 이름이 표시됩니다. 이 결론은 현재 조사 범위에 한하며 모든 시스템 구성 요소의 네트워크 동작에 대한 완전한 감사를 의미하지는 않습니다.",
-        "이 알림은 iOS 27.0.1에서 재현했습니다. Apple 공식 개발자 포럼에도 iOS 26.4, 26.5 및 iOS 27 베타의 유사 사례가 보고되어 있습니다. Apple 기술 지원은 관련 보고를 내부 문제 r.183584353에 연결했습니다. 이 안내의 업데이트 시점까지 공개 논의에서 수정된 OS 버전이나 공개 API를 통한 해결책은 발표되지 않았습니다. 알림을 안정적으로 없애는 수정은 아직 검증하지 못했습니다.",
-        "알림에서 “허용 안 함”을 선택해 주세요. 기기에 저장된 텍스트 노트의 편집과 저장에는 영향이 없습니다. 현재 앱은 그대로 유지해 주세요. 알림을 없애거나 이전 버전으로 되돌리려고 앱을 삭제하면 기기에 저장된 노트도 삭제됩니다. 필요하다면 먼저 “백업 및 이전”에서 백업을 내보내세요. 시스템 키보드 받아쓰기와 링크 열기, 공유, 클라우드 파일 서비스 이용처럼 사용자가 직접 시작하는 작업에는 각각의 설정과 정책이 적용됩니다."
-      ],
-      "appleLinkLabel": "Apple 공식 논의 읽기",
-      "detailsLinkLabel": "FAQ의 조사 안내와 이용 지침 읽기"
-    },
-    "tr": {
-      "heading": "iOS kablosuz veri izni istemi hakkında",
-      "updatedLabel": "Bildirim 8 Kasım 2026 tarihinde güncellendi",
-      "summary": "Bazı iPhone’larda Hızlı Not veya bir metin alanı açıldığında kablosuz veri izni istemi görünüyor. iOS’un sistem metin girişi veya dikte bileşenlerinin ağ kullanılabilirliğini kontrol eden çağrısını izledik. İstemin görünmesi tek başına uygulamanın uzak bir sunucuya bağlandığı veya içerik yüklediği anlamına gelmez. Sorunu iOS 27.0.1’de yeniden ürettik; Apple Geliştirici Forumları’nda iOS 26.4, 26.5 ve iOS 27 beta sürümleri için de benzer bildirimler bulunuyor. Yol açtığı endişe ve rahatsızlık için içtenlikle özür diliyor, çözümü araştırmayı sürdürüyoruz. Lütfen istem göründüğünde “İzin Verme”yi seçin. Yerel metin notlarını düzenleme ve kaydetme bundan etkilenmez.",
-      "paragraphs": [
-        "Bazı iPhone’larda Hızlı Not veya bir metin alanı açıldığında görünen kablosuz veri izni istemini araştırıyoruz. Mikrofon düğmesine dokunmadan veya dikteyi kullanmadan da bu istem görünebilir. Bunun yol açtığı endişe ve rahatsızlık için içtenlikle özür dileriz. Konuya öncelik veriyor, mümkün olan en kısa sürede bir geçici çözüm ve düzeltme bulup bunları doğrulamak için çalışıyoruz.",
-        "Bu sorun için kaynak kodunu ve toplanan günlükleri incelediğimizde, Mowyns uygulama kodunun başlattığı uzak istekler veya notların, eklerin ya da kayıtların yüklendiğine dair kanıt bulmadık. iOS metin girişi veya sistem klavyesinin dikte bileşenlerinin ağ kullanılabilirliğini kontrol eden çağrısını izledik. Bu kontrol ağ durumunu sorgular; çağrı veya izin istemi tek başına gerçek bir uzak bağlantının ya da veri yüklemesinin kanıtı değildir. Kontrol uygulama süreci içinde çalışabildiği için sistem uygulamanın adını gösterir. Bu bulgular mevcut incelemenin kapsamıyla sınırlıdır; tüm sistem bileşenlerinin ağ etkinliğinin eksiksiz bir denetimi değildir.",
-        "Bu istemi iOS 27.0.1’de yeniden ürettik. Apple’ın resmî geliştirici forumlarında iOS 26.4, 26.5 ve iOS 27 beta sürümleri için de benzer bildirimler var. Apple Teknik Destek, ilgili bildirimleri r.183584353 numaralı dahili sorunla ilişkilendirdi. Bu açıklamanın güncellendiği tarih itibarıyla kamuya açık tartışmada sorunu gideren bir işletim sistemi sürümü veya herkese açık API çözümü duyurulmadı. İstemi güvenilir biçimde ortadan kaldıran bir düzeltmeyi henüz doğrulayamadık.",
-        "Lütfen istem göründüğünde “İzin Verme”yi seçin. Yerel metin notlarını düzenleme ve kaydetme bundan etkilenmez. Mevcut uygulamanızı koruyun: istemi kaldırmak veya eski sürüme dönmek amacıyla uygulamayı silmeyin; silmek cihazdaki notları da kaldırır. Gerekirse önce “Yedekleme ve taşıma” üzerinden bir yedek dışa aktarın. Sistem klavyesinin dikte özelliği ve bağlantı açma, paylaşma ya da bulut dosya hizmetlerini kullanma gibi sizin başlattığınız işlemler, kendi ayarlarına ve politikalarına tabi olmaya devam eder."
-      ],
-      "appleLinkLabel": "Apple’ın resmî tartışmasını okuyun",
-      "detailsLinkLabel": "SSS’deki inceleme açıklamasını ve kullanım önerilerini okuyun"
     }
-  }
+  },
+  "appleRegionalReferenceURL": "https://developer.apple.com/forums/thread/716598?answerId=731860022"
 }

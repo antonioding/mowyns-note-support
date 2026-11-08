@@ -22,9 +22,12 @@ class NoticeTests(unittest.TestCase):
                 with self.subTest(locale=locale, detailed=detailed):
                     page = notice.inject_notice(BASE, self.data, locale, detailed=detailed)
                     self.assertEqual(page, notice.inject_notice(page, self.data, locale, detailed=detailed))
-                    self.assertEqual(page.count('id="wireless-data-notice"'), 1)
-                    self.assertIn(notice.APPLE_DISCUSSION, page)
-                    self.assertIn(notice.ISSUE, page)
+                    if locale in notice.NOTICE_LOCALES:
+                        self.assertEqual(page.count('id="wireless-data-notice"'), 1)
+                        self.assertIn(notice.APPLE_DISCUSSION, page)
+                        self.assertIn(notice.ISSUE, page)
+                    else:
+                        self.assertEqual(page, BASE)
                     stripped = re.sub(re.escape(notice.START) + r".*?" + re.escape(notice.END), "", page, flags=re.S)
                     stripped = re.sub(r'<style id="network-notice-style">.*?</style>', "", stripped, flags=re.S)
                     self.assertEqual(BASE, stripped)
@@ -44,9 +47,19 @@ class NoticeTests(unittest.TestCase):
 
     def test_unexpected_page_structure_is_rejected(self):
         with self.assertRaises(ValueError):
-            notice.inject_notice("<html><head></head><body>Missing heading</body></html>", self.data, "en-US", detailed=True)
+            notice.inject_notice("<html><head></head><body>Missing heading</body></html>", self.data, "zh-Hans", detailed=True)
         with self.assertRaises(ValueError):
             notice.inject_notice(BASE + notice.START, self.data, "en-US", detailed=True)
+
+    def test_existing_foreign_notices_are_removed_without_touching_page_content(self):
+        legacy = copy.deepcopy(self.data)
+        legacy["localizations"] = {locale: legacy["localizations"]["zh-Hans"] for locale in notice.LOCALES}
+        for locale in notice.LOCALES - notice.NOTICE_LOCALES:
+            with self.subTest(locale=locale):
+                old = notice.inject_notice(BASE, legacy, locale, detailed=True)
+                self.assertIn(notice.START, old)
+                self.assertEqual(notice.inject_notice(old, self.data, locale, detailed=True), BASE)
+                self.assertEqual(notice.render_notice_markdown(self.data, locale), "")
 
 
 if __name__ == "__main__":
