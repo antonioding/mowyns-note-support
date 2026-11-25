@@ -84,8 +84,10 @@ def inject_notice(page: str, data: dict, locale: str, *, detailed: bool, index: 
 
 
 def update_site(site: Path, data: dict, *, check: bool = False) -> list[str]:
+    locales = LOCALES | {page.parent.name for name in ("privacy.html", "support.html")
+                         for page in site.glob("*/" + name)}
     paths = [(site / locale / name, locale, name == "support.html", False)
-             for locale in sorted(LOCALES) for name in ("privacy.html", "support.html")]
+             for locale in sorted(locales) for name in ("privacy.html", "support.html")]
     paths.append((site / "index.html", "zh-Hans", False, True))
     updates = []
     for path, locale, detailed, index in paths:
